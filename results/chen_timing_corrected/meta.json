@@ -1,0 +1,29 @@
+{
+  "analysis": "source-aligned correction audit of compact Chen recall RSA",
+  "frozen_plan": "docs/chen_timing_correction_plan.md",
+  "additional_shift_trs": 0,
+  "historical_additional_shift_trs": 3,
+  "partial_payoff_candidate_excluded": true,
+  "subjects": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "11",
+    "12",
+    "13",
+    "14",
+    "15",
+    "16",
+    "17"
+  ],
+  "n_pairs": 11,
+  "label_permutations": 10000,
+  "annotation_lock_unchanged": true
+}

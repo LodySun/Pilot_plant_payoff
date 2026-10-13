@@ -1,0 +1,13 @@
+# Versions the committed results were produced with (Python 3.12.2).
+numpy==2.5.2
+pandas==3.0.5
+scipy==1.18.1
+pyarrow==25.0.1          # parquet backend for the control-pair table
+PyYAML==6.0.3
+statsmodels==0.14.6
+openpyxl==3.1.5          # reads the released segment spreadsheet and transcripts
+matplotlib==3.11.1
+# Sentence embeddings for Family-B controls and the spoken-content measures
+sentence-transformers==6.0.0
+transformers==5.16.1
+torch==2.13.0

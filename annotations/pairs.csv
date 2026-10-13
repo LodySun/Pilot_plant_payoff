@@ -1,0 +1,12 @@
+pair_id,plant_start_s,plant_end_s,payoff_start_s,payoff_end_s,modality_plant,modality_payoff,plant_anchor_type,payoff_anchor_type,characters_plant,characters_payoff,crosses_run,plant_desc,payoff_desc,plant_keywords,notes
+1_War-Soldier,2.0,6.0,111.0,113.0,visual,verbal,shot,utterance,,John;Psychiatrist,,,,war soldier,"episode timecodes as provided: plant 0:02-0:06, payoff 1:51-1:53"
+2_Sherlock_Holmes,418.0,420.0,703.0,705.0,visual,verbal,shot,utterance,Police,Sherlock,,,,Sherlock Holmes; SH,"episode timecodes as provided: plant 6:58-7:00, payoff 11:43-11:45"
+3_Gun,85.0,87.0,2470.0,2472.0,visual,visual,shot,shot,,JW,,,,gun; pistol,"episode timecodes as provided: plant 1:25-1:27, payoff 41:10-41:12"
+4_Roommate,496.0,498.0,633.0,635.0,verbal,verbal,utterance,utterance,John;Mike,John;Mike;Sherlock,,,,roommate,"episode timecodes as provided: plant 8:16-8:18, payoff 10:33-10:35"
+5_War_Location,597.0,599.0,1158.0,1162.0,verbal,verbal,utterance,utterance,John;Sherlock,John;Sherlock,,,,Afghanistan; Iraq,"episode timecodes as provided: plant 9:57-9:59, payoff 19:18-19:22"
+6_Red_nails,753.0,755.0,1436.0,1439.0,visual,visual,shot,shot,,,,,,red nails,"episode timecodes as provided: plant 12:33-12:35, payoff 23:56-23:59"
+7_Suitcase,1643.0,1645.0,2696.0,2698.0,verbal,visual,utterance,shot,Sherlock,Sherlock,,,,pink suitcase,"episode timecodes as provided: plant 27:23-27:25, payoff 44:56-44:58"
+8_Harrys_Name,488.0,490.0,1289.0,1293.0,verbal,verbal,utterance,utterance,John;Mike,John;Sherlock,,,,Harry; Harriet; sister,"episode timecodes as provided: plant 8:08-8:10, payoff 21:29-21:33"
+9_Trust_issues,99.0,101.0,2314.0,2317.0,verbal,verbal,utterance,utterance,John;Psychiatrist,John;Enemy,,,,trust issues; psychiatrist notes,"episode timecodes as provided: plant 1:39-1:41, payoff 38:34-38:37"
+10_Money_for_info,2276.0,2279.0,2644.0,2646.0,verbal,verbal,utterance,utterance,John;Enemy,John;Sherlock,,,,money information,"episode timecodes as provided: plant 37:56-37:59, payoff 44:04-44:06"
+11_Serial_Killer,384.0,387.0,924.0,926.0,verbal,visual,utterance,shot,Reporters,,,,,serial killer,"episode timecodes as provided: plant 6:24-6:27, payoff 15:24-15:26"

@@ -1,0 +1,11 @@
+{
+  "n_payoff_scenes": 10,
+  "same_scene_vs_raw_plant_spearman_rho": -0.6219627819854863,
+  "same_scene_vs_raw_plant_spearman_p": 0.05485939233686211,
+  "same_scene_vs_raw_plant_pearson_r": -0.4889755055006384,
+  "same_scene_vs_raw_plant_pearson_p": 0.15151210026793618,
+  "same_scene_vs_partial_plant_spearman_rho": -0.37426130267530777,
+  "same_scene_vs_partial_plant_spearman_p": 0.28666318907352667,
+  "coverage_vs_raw_plant_spearman_rho": 0.34877207695853185,
+  "coverage_vs_raw_plant_spearman_p": 0.32328922497864665
+}

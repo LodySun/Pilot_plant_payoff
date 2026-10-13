@@ -1,0 +1,193 @@
+# Plant-payoff poster analyses -- central configuration.
+# Every value a script needs about timing, sampling, permutations and paths.
+
+seed: 20260826
+
+acquisition:
+  # Repetition time in seconds (Chen et al. 2017, Sherlock).
+  tr_seconds: 1.5
+  # Haemodynamic lag, expressed in TRs. 3 TRs = 4.5 s.
+  hrf_shift_trs: 3
+  # Subject counts are NOT declared here. They differ by release (the Chen
+  # ROI release has 17, the fmriprep derivatives 16) and are discovered from
+  # the data at run time and recorded in docs/data_notes.md.
+
+windows:
+  # How a moment's TR window is defined.
+  #   segment : the enclosing fine segment from the released label file,
+  #             clamped to [segment_min_trs, segment_max_trs]. Preferred --
+  #             the segment boundaries are where the stimulus actually
+  #             changes, so the window tracks the event rather than a fixed
+  #             stopwatch. Falls back to `fixed` if the label file is absent.
+  #   fixed   : ceil(duration_seconds / tr), clamped to [min_trs, max_trs].
+  # Whichever is active is applied identically to real and control moments.
+  mode: segment
+  segment_min_trs: 2
+  segment_max_trs: 6
+  # Moment window length in TRs = ceil(duration_seconds / tr), clamped here.
+  min_trs: 2
+  max_trs: 4
+  # Fixed window lengths the Stage-4 robustness sweep forces, in TRs.
+  robustness_trs: [2, 3, 4]
+
+annotations:
+  path: annotations/pairs.csv
+  lock_path: annotations/pairs.csv.lock
+  template_path: annotations/pairs_template.csv
+  # Minimum separation between the end of a plant and the start of a payoff.
+  min_gap_seconds: 60
+  # Minimum duration of any single annotated moment window.
+  min_window_seconds: 2.0
+  # Below this, validation warns loudly (the Day-4 decision point).
+  low_pair_count_warning: 8
+  # How to read the timestamps in pairs.csv.
+  #   episode    : timecodes as read off the episode itself. Converted to
+  #                movie time by adding the run-opening cartoon time already
+  #                elapsed (+39 s before episode 1380 s, +78 s after). Use
+  #                this when annotating against a video of the episode.
+  #   cumulative : seconds from the start of Part 1. Part 2 times are
+  #                local + 1419.0 s (= 946 TRs). This is what the analysis
+  #                timeline uses internally.
+  #   part_local : times are local to a movie part; pairs.csv must then carry
+  #                a `part` column with value 1 or 2 for each moment
+  #                (columns `plant_part` and `payoff_part`).
+  # The released scene spreadsheet uses part_local; everything derived by this
+  # pipeline uses cumulative. See docs/data_notes.md.
+  time_frame: episode
+  # Warn when an annotated moment's own description matches the scene at the
+  # OTHER frame's timestamp better than the scene at the stated one -- the
+  # signature of times entered in the wrong frame. Similarity margin required
+  # before warning.
+  time_frame_check_margin: 0.15
+
+controls:
+  # Family A: distance-matched.
+  n_per_pair: 100
+  gap_tolerance_frac: 0.10
+  # Buffer (in TRs) around every real plant/payoff window; control moments
+  # may not be drawn from inside these.
+  exclusion_buffer_trs: 1
+  # Family B: distance + feature-matched (preferred), falling back to
+  # distance + semantic when the segment label file is unavailable.
+  semantic_tolerance: 0.10
+  semantic_tolerance_relaxed: 0.15
+  semantic_min_surviving: 30
+  embedding_model: sentence-transformers/all-MiniLM-L6-v2
+
+  feature_matching:
+    # Use the released segment labels when they are present. If not, Family B
+    # silently becomes the embedding-similarity version and records that.
+    enabled: true
+    # Matched exactly. Each control moment must match the corresponding real
+    # moment (control a <-> plant, control b <-> payoff).
+    exact_fields: [anyone_speaking, indoor_outdoor, sherlock_onscreen, john_onscreen]
+    # Arousal: composite of per-rater z-scores, re-standardised across
+    # segments so the tolerance is genuinely "in SD units".
+    arousal_sd_tolerance: 0.5
+    # Valence has no SD -- it is a count of '+' across 4 raters (0-4).
+    valence_tolerance: 1
+    # Relaxation ladder, applied in order until min_surviving is reached.
+    # Each rung is recorded in docs/data_notes.md.
+    relax_arousal_steps: [0.5, 0.75, 1.0, 1.5, 2.0]
+    relax_valence_steps: [1, 2, 4]
+    # Order in which exact constraints are dropped if the numeric ladder is
+    # exhausted. Least theoretically important first.
+    drop_exact_order: [john_onscreen, sherlock_onscreen, indoor_outdoor, anyone_speaking]
+    min_surviving: 30
+
+# Atlas ROIs are not used here: the poster analyses use the two ROIs
+# distributed with the Chen et al. release (pmc_chen, aud_early_chen).
+rois: []
+
+analysis:
+  # Multiple-comparison correction applied across the ROI set.
+  fdr_alpha: 0.05
+  fdr_method: fdr_bh
+
+# Design-level re-expression of viewing Family A as complete pseudo-narrative
+# datasets. This is a communication/diagnostic view of the existing matched
+# null, not an independent inferential family. One matched control is selected
+# for each locked pair on every draw, with the same selection used for every
+# participant. The exact-gap sensitivity keeps all 11 pairs by using the
+# already-defined pair-specific fixed-duration windows.
+pseudo_dataset_null:
+  results_dir: results/viewing_pseudo_null
+  primary_roi: pmc_chen
+  permutations: 10000
+  smoke_permutations: 250
+  exact_controls_per_pair: 100
+
+# Plant-context window used by the semantic spoken-content measure (Fig 4C).
+rsa_recall:
+  context_radius: 1
+  permutations: 10000
+
+# Distractor rule for the recall-binding content measure (Fig 4C).
+recall_binding:
+  min_distractors: 2
+  permutations: 10000
+  bootstrap_repetitions: 10000
+
+# Within-participant movie -> spoken-recall neural reinstatement in the Chen
+# release. Frozen before inspecting any plant/payoff recall-BOLD statistic.
+# Only the two ROIs distributed in Sherlock_processed are available here.
+chen_recall_bold:
+  results_dir: results/chen_recall_bold
+  primary_roi: pmc_chen
+  control_roi: aud_early_chen
+  hrf_shift_trs: 3
+  zero_shift_sensitivity: true
+  minimum_scene_trs: 2
+  minimum_subject_pairs: 3
+  minimum_candidate_subjects: 6
+  label_permutations: 10000
+
+# Correction audit frozen after confirming that the compact Chen movie and
+# recall MAT files already contain the author's 3-TR HRF shift. These outputs
+# remain separate from the historical extra-3-TR analysis.
+chen_timing_corrected:
+  results_dir: results/chen_timing_corrected
+  additional_shift_trs: 0
+  label_permutations: 10000
+
+# Frozen before inspecting the onset-aligned curve. This exploratory analysis
+# samples full 3-TR recall windows from -18 to +21 s around each released
+# payoff-recall scene onset. The x axis is shifted back by the fixed +3-TR HRF
+# lag; it is a relative BOLD profile, not millisecond cognitive timing.
+chen_recall_timecourse:
+  results_dir: results/chen_recall_timecourse
+  primary_roi: pmc_chen
+  control_roi: aud_early_chen
+  hrf_shift_trs: 3
+  window_trs: 3
+  lag_min_trs: -12
+  lag_max_trs: 14
+  lag_step_trs: 1
+  minimum_subject_pairs: 3
+  label_permutations: 10000
+  smoke_permutations: 23
+
+# Spoken-content measures related to recall-BOLD plant identity (Fig 4C).
+# Frozen plan: docs/chen_recall_content_plan.md.
+
+chen_recall_content:
+  results_dir: results/recall_content
+  primary_roi: pmc_chen
+  control_roi: aud_early_chen
+  context_radius: 1
+  permutations: 10000
+  bootstrap_repetitions: 10000
+  minimum_cells: 20
+
+paths:
+  raw: data/raw
+  annotations_source: data/annotations_source
+  derived: data/derived
+  rois: data/derived/rois
+  results_smoke: results/smoke
+  figures: figures
+  data_notes: docs/data_notes.md
+
+figures:
+  dpi: 300
+  formats: [pdf, png]

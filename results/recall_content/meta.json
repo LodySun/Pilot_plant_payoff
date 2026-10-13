@@ -1,0 +1,13 @@
+{
+  "exploratory": true,
+  "analysis": "recall-BOLD plant identity versus concurrently spoken plant content",
+  "frozen_plan": "docs/chen_recall_content_plan.md",
+  "neural_outcome": "results/chen_timing_corrected/pair_cells.csv (source-aligned)",
+  "annotation_hash": "8e2532a8eac7e792b9e24d18c96009d5db2ad2791c9d983d06c6be6a10fce172",
+  "direct_subject_mapping": "NN01-NN17 -> Princeton DataSpace s1-s17",
+  "mapping_source_doi": "10.1016/j.dib.2023.109490",
+  "n_scene_transcript_rows": 584,
+  "n_content_cells": 132,
+  "permutations": 10000,
+  "bootstrap_repetitions": 10000
+}

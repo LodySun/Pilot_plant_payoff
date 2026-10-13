@@ -1,0 +1,6 @@
+8e2532a8eac7e792b9e24d18c96009d5db2ad2791c9d983d06c6be6a10fce172  pairs.csv
+# locked      : 2026-09-06T21:20:11Z
+# data rows   : 11
+# Do not edit. Regenerate with `make lock-annotations`.
+# Changing annotations/pairs.csv after this point invalidates every
+# result in results/main/ and results/robustness/.

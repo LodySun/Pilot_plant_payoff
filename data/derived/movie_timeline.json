@@ -1,0 +1,50 @@
+{
+  "source": "Sherlock_Segments_1000_NN_2017.xlsx",
+  "tr_seconds": 1.5,
+  "part1_trs": 946,
+  "part2_trs": 1030,
+  "total_trs": 1976,
+  "part1_seconds": 1419.0,
+  "part2_offset_seconds": 1419.0,
+  "movie_duration_seconds": 2964.0,
+  "annotated_duration_seconds": 2963.0,
+  "n_segments": 1000,
+  "n_scenes": 50,
+  "tr_index_base": 0,
+  "tr_column_base_in_source": 1,
+  "clock": "cumulative seconds from the start of Part 1",
+  "n_segments_without_tr": 2,
+  "cartoon_spans": [
+    {
+      "part": 1,
+      "start_s": 0.0,
+      "end_s": 39.0,
+      "scene_id": 1
+    },
+    {
+      "part": 2,
+      "start_s": 1419.0,
+      "end_s": 1458.0,
+      "scene_id": 28
+    }
+  ],
+  "cartoon_seconds": 78.0,
+  "narrative_spans": [
+    {
+      "part": 1,
+      "start_s": 39.0,
+      "end_s": 1419.0
+    },
+    {
+      "part": 2,
+      "start_s": 1458.0,
+      "end_s": 2963.0
+    }
+  ],
+  "episode_offset_by_part": {
+    "1": 39.0,
+    "2": 78.0
+  },
+  "episode_split_s": 1380.0,
+  "episode_duration_s": 2885.0
+}

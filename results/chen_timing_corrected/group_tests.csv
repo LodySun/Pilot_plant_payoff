@@ -1,0 +1,5 @@
+metric,roi,n,mean,median,n_above,n_below,statistic,p_value,alternative,null_value,q_within_metric,significant_within_metric,q_all_four,significant_all_four
+identity_percentile,aud_early_chen,17,0.48837932900432895,0.484375,7,9,61.0,0.6413095557928394,greater,0.5,0.6413095557928394,False,0.7707138061523438,False
+identity_percentile,pmc_chen,17,0.5502750721500722,0.5535714285714286,12,4,107.5,0.0205173425632804,greater,0.5,0.0410346851265608,True,0.0410346851265608,True
+partial_identity_percentile,aud_early_chen,17,0.4716993994567525,0.4754464285714286,6,11,61.0,0.7707138061523438,greater,0.5,0.7707138061523438,False,0.7707138061523438,False
+partial_identity_percentile,pmc_chen,17,0.573744194647556,0.5584415584415584,13,4,124.0,0.0116119384765625,greater,0.5,0.023223876953125,True,0.0410346851265608,True

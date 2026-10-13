@@ -1,0 +1,12 @@
+pair_id,segment_plant_trs,segment_payoff_trs,segment_gap_trs,segment_exact_candidates,fixed_plant_trs,fixed_payoff_trs,fixed_gap_trs,fixed_exact_candidates,fixed_exact_used,crosses_run
+1_War-Soldier,2,4,68,14,3,2,70,1576,100,0
+2_Sherlock_Holmes,3,3,188,7,2,2,188,1379,100,0
+3_Gun,2,2,1614,40,2,2,1614,283,100,1
+4_Roommate,2,2,90,201,2,2,90,1549,100,0
+5_War_Location,2,3,372,22,2,3,372,1021,100,0
+6_Red_nails,6,6,477,0,2,2,479,421,100,1
+7_Suitcase,4,2,697,6,2,2,700,467,100,0
+8_Harrys_Name,2,2,532,111,2,3,532,756,100,0
+9_Trust_issues,4,5,1494,0,2,2,1500,377,100,1
+10_Money_for_info,2,2,243,125,2,2,243,1271,100,0
+11_Serial_Killer,6,2,354,11,2,2,358,1067,100,0

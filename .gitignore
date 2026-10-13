@@ -1,0 +1,12 @@
+# Third-party inputs: fetched by `make data` or downloaded by hand (see README)
+data/raw/
+data/annotations_source/
+# Regenerable caches
+data/derived/scene_embeddings.*
+# Verbatim per-scene recall transcripts (third-party text; not needed for figures)
+results/recall_content/transcript_scene_cells.csv
+# Python / OS
+__pycache__/
+*.pyc
+.venv/
+.DS_Store

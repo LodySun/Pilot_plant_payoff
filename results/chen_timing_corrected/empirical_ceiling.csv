@@ -1,0 +1,2 @@
+benchmark,n_subjects,n_unique_subject_payoff_scenes,raw_plant_identity_mean,same_scene_identity_mean,raw_fraction_of_chance_to_same_scene_lift,note
+same payoff scene movie-to-recall identity,17,115,0.5486271591970121,0.6623760827488143,0.2994724245949158,"empirical within-scene benchmark, not a mathematical noise ceiling"
