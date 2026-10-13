@@ -182,7 +182,7 @@ def write_summary(path: Path, tests: pd.DataFrame, permutations: pd.DataFrame,
               "subject x payoff-scene cells. The raw plant mean on that "
               f"deduplicated set is **{benchmark.raw_plant_identity_mean:.3f}**, reaching "
               f"**{benchmark.raw_fraction_of_chance_to_same_scene_lift:.1%}** "
-              "of the lift from chance (.5) to that benchmark. This is an empirical "
+              "of the lift from chance (0.5) to that benchmark. This is an empirical "
               "within-scene reference, not a mathematical ceiling.", "",
               f"Across the 10 payoff scenes, same-scene quality and raw plant identity "
               f"were negatively associated (Spearman rho="

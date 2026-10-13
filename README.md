@@ -33,41 +33,41 @@ place them at 100% so ticks print at 22 pt).
 
 | | value |
 |---|---|
-| Viewing, locked pairs vs pseudo-narratives (PMC) | .494 vs mean .500; descriptive p = .568 (exact-gap sensitivity .534, p = .148) |
-| Recall identity, PMC | mean .550, 95% bootstrap CI .507–.596; 12/17 above .50 |
-| Order-valid null, PMC | mean .482 (SD .035); permutation p = .024, **q = .049** (FDR across ROIs) |
-| Payoff-controlled identity, PMC | .574; q = .035 |
-| Early auditory cortex | .488; q = .659 |
-| Reliability ceiling, PMC | .599–.650 (leave-one-participant-out to all-participant bound) |
-| Leave-one-subject-out / leave-one-pair-out, PMC | p = .005–.037 / p = .004–.188 (5 of 11 ≥ .05) |
-| Time course, PMC peak | +4.5 s; max-statistic across lags p = .020, q = .079 across four curves |
-| Spoken keyword vs identity, PMC | partial r = −.239, p = .005 |
+| Viewing, locked pairs vs pseudo-narratives (PMC) | 0.494 vs mean 0.500; descriptive p = 0.568 (exact-gap sensitivity 0.534, p = 0.148) |
+| Recall identity, PMC | mean 0.550, 95% bootstrap CI 0.507–0.596; 12/17 above 0.50 |
+| Order-valid null, PMC | mean 0.482 (SD 0.035); permutation p = 0.024, **q = 0.049** (FDR across ROIs) |
+| Payoff-controlled identity, PMC | 0.574; q = 0.035 |
+| Early auditory cortex | 0.488; q = 0.659 |
+| Reliability ceiling, PMC | 0.599–0.650 (leave-one-participant-out to all-participant bound) |
+| Leave-one-subject-out / leave-one-pair-out, PMC | p = 0.005–0.037 / p = 0.004–0.188 (5 of 11 ≥ 0.05) |
+| Time course, PMC peak | +4.5 s; max-statistic across lags p = 0.020, q = 0.079 across four curves |
+| Spoken keyword vs identity, PMC | partial r = −0.239, p = 0.005 |
 
 ## Reading the results correctly
 
 - **Timing is source-aligned.** The Chen compact-release MAT files already
   contain the authors' 3-TR haemodynamic shift, so no further shift is added
   (`docs/chen_timing_correction_plan.md`).
-- **The right baseline for recall identity is the order-valid null, not .50.**
+- **The right baseline for recall identity is the order-valid null, not 0.50.**
   True plants always precede their payoff; earlier scenes score lower on
-  average (.486 in PMC) than the payoff's own scene or later scenes, so the
-  relabeling null that keeps every plant before its payoff centres at .482.
+  average (0.486 in PMC) than the payoff's own scene or later scenes, so the
+  relabeling null that keeps every plant before its payoff centres at 0.482.
 - **Reliability ceiling** (`src/compute_identity_ceiling.py`): a Nili-style
   noise ceiling for this exact retrieval problem — same ROI, windows, pairs,
   candidates and percentile. For each participant and pair, the earlier
   candidate that the *other* participants rank highest is scored in the
   held-out participant (lower bound) or with everyone included (upper bound).
-  In early auditory cortex the lower bound (.474) is below the null (.503):
+  In early auditory cortex the lower bound (0.474) is below the null (0.503):
   candidate rankings are not reproducible there, so a null result in that
   region is not evidence that the effect is specific to PMC.
-  `results/chen_timing_corrected/empirical_ceiling.csv` (.662) is a different
+  `results/chen_timing_corrected/empirical_ceiling.csv` (0.662) is a different
   quantity — how well a recalled payoff identifies its *own* movie scene — and
   is not this ceiling.
 - **Figure 2 is descriptive.** The pseudo-narrative null re-presents the
   matched-control comparison (Family A: same temporal gap; Family-A rows only);
   it is not an independent test.
 - **Figure 4B is exploratory.** The peak survives correction across lags
-  within the curve but not FDR across the four curves (q = .079).
+  within the curve but not FDR across the four curves (q = 0.079).
 - **Figure 4C, spoken keyword.** The keyword varies across participants in only
   3 pairs, 2 of which name payoff details; saying it predicted *lower*
   identity. Semantic plant content and recall binding showed no association.
@@ -110,7 +110,9 @@ downloaded on first use.
 
 Run from scratch in this repository, every analysis reproduced the original
 pipeline's outputs: all recall, time-course, pseudo-null, null-draw and
-ceiling tables are byte-identical, and the four figures are pixel-identical.
+ceiling tables are byte-identical (except that numbers in one generated
+summary now carry a leading zero), and the four figures matched pixel for
+pixel before numbers on them were given leading zeros.
 The spoken-content tables differ only in raw sentence-embedding cosine
 similarities (≤ 4 × 10⁻⁷, float32 rounding); all percentiles, keyword hits and
 test statistics agree to six decimals.

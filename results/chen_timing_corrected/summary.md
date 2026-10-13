@@ -41,7 +41,7 @@ PMC contributes **132** subject x relation cells from **17** participants. Cells
 
 ## Empirical same-scene benchmark
 
-The source-aligned payoff same-scene movie-to-recall benchmark is **0.662** across 115 matched, unique subject x payoff-scene cells. The raw plant mean on that deduplicated set is **0.549**, reaching **29.9%** of the lift from chance (.5) to that benchmark. This is an empirical within-scene reference, not a mathematical ceiling.
+The source-aligned payoff same-scene movie-to-recall benchmark is **0.662** across 115 matched, unique subject x payoff-scene cells. The raw plant mean on that deduplicated set is **0.549**, reaching **29.9%** of the lift from chance (0.5) to that benchmark. This is an empirical within-scene reference, not a mathematical ceiling.
 
 Across the 10 payoff scenes, same-scene quality and raw plant identity were negatively associated (Spearman rho=-0.622, p=0.055); recall coverage did not significantly track raw plant identity (rho=+0.349, p=0.323). These n=10 diagnostics are descriptive.
 

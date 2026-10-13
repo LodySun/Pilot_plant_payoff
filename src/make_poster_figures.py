@@ -189,10 +189,10 @@ def figure2(data) -> None:
         ax.plot(sample, [.955, .955], transform=ax.transAxes, color=colour, ls=style,
                 lw=width, solid_capstyle="butt", clip_on=False)
         tx = x0 + .065 if ha == "left" else x0 - .065
-        ax.text(tx, .985, text.replace("0.", "."), transform=ax.transAxes, ha=ha, va="top",
+        ax.text(tx, .985, text, transform=ax.transAxes, ha=ha, va="top",
                 fontsize=NOTE, linespacing=1.15)
     ax.set_xlim(.37, .63)
-    ax.set_xticks([.40, .45, .50, .55, .60], [".40", ".45", ".50", ".55", ".60"])
+    ax.set_xticks([.40, .45, .50, .55, .60], ["0.40", "0.45", "0.50", "0.55", "0.60"])
     ax.set_yticks([0, 400, 800])
     ax.set_xlabel("Matched-null percentile")
     ax.set_ylabel("Pseudo-narratives")
@@ -244,9 +244,9 @@ def figure3() -> None:
                 fontsize=56 if q < .05 else LABEL, fontweight="bold")
         if roi == "pmc_chen":
             for y, nm, val in (((c_lo + c_hi) / 2, "reliability ceiling",
-                                f"{c_lo:.3f}–{c_hi:.3f}".replace("0.", ".")),
-                               (mean, "observed", f"{mean:.3f}".lstrip("0")),
-                               (n_mean, "null", f"{n_mean:.3f}".lstrip("0"))):
+                                f"{c_lo:.3f}–{c_hi:.3f}"),
+                               (mean, "observed", f"{mean:.3f}"),
+                               (n_mean, "null", f"{n_mean:.3f}")):
                 ax.text(x + band + .05, y, f"{nm}\n{val}", ha="left", va="center",
                         fontsize=KEY, linespacing=1.1)
     ax.set_xlim(-.5, 1.95)
@@ -280,7 +280,7 @@ def figure4(data) -> None:
         ax.scatter(r.observed, y, marker="D", s=200, color=col, edgecolor="white",
                    linewidth=1.5, zorder=4)
         if roi == "pmc_chen":
-            ax.text(r.observed + .012, y, f"q = {r.p_fdr_rois:.3f}".replace("0.", "."),
+            ax.text(r.observed + .012, y, f"q = {r.p_fdr_rois:.3f}",
                     va="center", fontsize=NOTE)
     for y, head in ((-.75, "Raw"), (1.95, "Payoff-controlled")):
         ax.text(.385, y, head, ha="left", va="center", fontsize=NOTE, fontweight="bold")
@@ -288,7 +288,7 @@ def figure4(data) -> None:
     ax.set_yticks([r[0] for r in rows], ["A1", "PMC", "A1", "PMC"])
     ax.set_ylim(4.3, -1.25)
     ax.set_xlim(.38, .68)
-    ax.set_xticks([.4, .5, .6], [".4", ".5", ".6"])
+    ax.set_xticks([.4, .5, .6], ["0.4", "0.5", "0.6"])
     ax.set_xlabel("Identity percentile")
     ax.set_title("A  Correct relation", loc="left")
     ax.grid(axis="x", zorder=0)
@@ -315,10 +315,10 @@ def figure4(data) -> None:
     ax.scatter([peak.relative_seconds], [peak.excess], s=160, color=PALETTE["rose_dark"],
                edgecolor="white", linewidth=1.5, zorder=6)
     ax.text(peak.relative_seconds + 1.5, peak.excess,
-            f"peak +{peak.relative_seconds:.1f} s\nmaxT p = {ts.peak_p_fwer_lags:.3f}".replace("0.0", ".0"),
+            f"peak +{peak.relative_seconds:.1f} s\nmaxT p = {ts.peak_p_fwer_lags:.3f}",
             va="center", fontsize=NOTE)
     ax.set_xticks([-15, 0, 15])
-    ax.set_yticks([-.05, 0, .05], ["−.05", "0", ".05"])
+    ax.set_yticks([-.05, 0, .05], ["−0.05", "0", "0.05"])
     ax.set_xlabel("Seconds from recall onset")
     ax.set_ylabel("Evidence above shuffle")
     ax.set_title("B  Onset-centred", loc="left")
@@ -339,13 +339,13 @@ def figure4(data) -> None:
         ax.scatter([r.partial_r], [y], s=160, color=PALETTE["sage"], edgecolor="white",
                    linewidth=1.5, zorder=3)
         if measure == "keyword_hit":
-            ax.text(r.partial_r, y + .2, f"p = {r.p_cluster_signflip:.3f}".replace("0.", "."),
+            ax.text(r.partial_r, y + .2, f"p = {r.p_cluster_signflip:.3f}",
                     ha="center", va="top", fontsize=NOTE)
     ax.axvline(0, color=PALETTE["muted"], ls=(0, (4, 3)), lw=1.6)
     ax.set_yticks(range(3), [m[1] for m in mapping])
     ax.set_ylim(2.5, -.5)
     ax.set_xlim(-.48, .32)
-    ax.set_xticks([-.4, -.2, 0, .2], ["−.4", "−.2", "0", ".2"])
+    ax.set_xticks([-.4, -.2, 0, .2], ["−0.4", "−0.2", "0", "0.2"])
     ax.set_xlabel("Partial r with identity")
     ax.set_title("C  Spoken content", loc="left")
     ax.grid(axis="x", zorder=0)
